@@ -228,7 +228,7 @@ console.log(minToFront([4, 2, 1, 3, 5]));
 // Given a numerical array, reverse the order of values, in-place. The reversed array should have the same length, with existing elements moved to other indices so that order of elements is reversed. Working ‘in-place’ means that you cannot use a second array – move values within the array that you are given. As always, do not use built-in array functions such as splice().
 
 //Array: Min to Front Given an array of comparable values, move the lowest element to array’s front, shifting backward any elements previously ahead of it. Do not otherwise change the array’s order. Given [4,2,1,3,5], change it to [1,4,2,3,5] and return it. As always, do this without using built-in functions.
-const minToPos = (arr) => {
+const minToPos1 = (arr) => {
     let lowestNumIdx = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[lowestNumIdx] > arr[i]) {
@@ -237,7 +237,7 @@ const minToPos = (arr) => {
     }
     return lowestNumIdx;
 };
-const minToFront = (arr) => {
+const minToFront1 = (arr) => {
     let minPos = minToPos(arr);
     for (let i = minPos; i > 0; i--) {
         [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
