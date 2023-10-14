@@ -273,5 +273,5 @@ const reverseArray2 = (array) => {
     }
     return array;
 };
-console.log(reverseArray2([1, 2, 3, 4, 5, 6, 7]));
+console.log(reverseArray2([1, 2, 3, 4, 5, 6, 7, 9]));
 console.log(reverseArray2([1, 2, 3, 4, 5, 6, 7, 10]));
