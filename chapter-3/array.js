@@ -107,3 +107,79 @@ const secondLargest = (arr) => {
     return secondLargest;
 };
 console.log(secondLargest([42, 1, 4, Math.PI, 7]));
+
+const ntnLargest = (arr, n) => {
+    if (n > arr.length) {
+        return null;
+    }
+
+    return arr[arr.length - n];
+};
+
+console.log(ntnLargest([10, 5, 8, 20, 15])); // not correct
+
+const shuffleArr = (arr) => {
+    let randomIndex = [];
+    for (let i = 0; i < arr.length; i++) {
+        randomIndex = Math.floor(Math.random() * arr.length);
+        [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
+    }
+    return arr;
+};
+
+console.log(shuffleArr([1, 2, 3, 4, 5]));
+
+//Given array, and indices start and end, remove vals in that index range, working in-place (hence shortening the array). Given ([20,30,40,50,60,70],2,4), change to [20,30,70] and return it.
+
+function removeRange(arr, start, end) {
+    arr.splice(start, end - start + 1);
+    return arr;
+}
+
+console.log(removeRange([20, 30, 40, 50, 60, 70], 2, 4));
+
+// The Luhn formula is sometimes used to validate credit card numbers. Create the function isCreditCardValid(digitArr) that accepts an array of digits on the card (13-19 depending on the card), and returns a boolean whether the card digits satisfy the Luhn formula, as follows:
+// 1)      Set aside the last digit; do not include it in these calculations (until step 5);
+// 2)      Starting from the back, multiply the digits in odd positions (last, third-to-last, etc.) by 2;
+// 3)      If any results are larger than 9, subtract 9 from them;
+// 4)      Add all numbers (not just our odds) together;
+// 5)      Now add the last digit back in – the sum should be a multiple of 10. For example, when given digit array
+// [5,2,2,8,2], after step 1) it becomes
+// [5,2,2,8], then after step 2) it is
+// [5,4,2,16]. Post-3) we have [5,4,2,7], then following 4) it becomes 18. After step 5) our value is 20, so ultimately we return true. If the final digit were any non-multiple-of-10, we would instead return false.
+// isValidCreditCardNumber;
+const isValidCreditCardNumber = (nums) => {
+    let sum = nums[nums.length - 1];
+    let product;
+    for (let i = nums.length - 2; i >= 0; i--) {
+        if (i % 2 !== 0) {
+            product = nums[i] * 2;
+            if (product > 9) product -= 9;
+            sum += product;
+        } else {
+            sum += nums[i];
+        }
+    }
+    return sum % 10 === 0;
+};
+const isCreditCardValid = (digitArr) => {
+    let lastDigit = digitArr[digitArr.length - 1];
+    let sum = 0;
+};
+console.log(isValidCreditCardNumber([5, 2, 2, 8, 2]));
+// Array: Remove Range
+// Given array, and indices start and end, remove
+// remove vals in that index range, working in-place (hence shortening the array). Given ([20,30,40,50,60,70],2,4), change to [20,30,70] and return it.
+const removeRange = (arr, start, end) => {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (i < start || i > end) {
+            arr[count] = arr[i];
+            count++;
+        }
+    }
+    arr.length = count;
+};
+const array = [20, 30, 40, 50, 60, 70];
+removeRange(array, 2, 4);
+console.log(array);
