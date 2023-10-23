@@ -41,3 +41,41 @@ const isHtmlValid = (tags) => {
 // console.log(isHtmlValid(["<div>"]));
 // console.log(isHtmlValid(["<div>", "</div>"]));
 // console.log(isHtmlValid(["</div>", "<div1>"]));
+
+//// Create a function, that takes a string, each char of string is brace, <(){}[]>. You have to return true if Braces are valid, otherwise false.
+// "{}[()]" => Valid
+// "[}" => Not Valid
+// "[{]}" => No Valid
+// "{{}}[()](" => Not Valid
+
+const openingVersionOfClosing = (brace) => {
+    if (brace === "]") {
+        return "[";
+    }
+    if (brace === "}") {
+        return "{";
+    }
+    if (brace === ")") {
+        return "(";
+    }
+};
+console.log(openingVersionOfClosing("]"));
+const isValidBraces = (braces) => {
+    const holder = [];
+    const openingBraces = ["[", "{", "("];
+    const closingBraces = ["]", "}", ")"];
+    for (const brace of braces) {
+        if (openingBraces.includes(brace)) {
+            holder.push(brace);
+        } else if (closingBraces.includes(brace)) {
+            const lastOpeningBrace = holder.pop();
+            if (lastOpeningBrace !== openingVersionOfClosing(brace)) {
+                return false;
+            }
+        }
+    }
+    return holder.length === 0;
+};
+console.log(isValidBraces("{{}}[()]("));
+console.log(isValidBraces("{}[()]"));
+console.log(isValidBraces("){}[()]("));
