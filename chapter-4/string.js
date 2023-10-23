@@ -79,3 +79,74 @@ const isValidBraces = (braces) => {
 console.log(isValidBraces("{{}}[()]("));
 console.log(isValidBraces("{}[()]"));
 console.log(isValidBraces("){}[()]("));
+
+//Create a function that, given a string, returns the string’s acronym (first letters only, capitalized). Given " there's no free lunch  -  gotta pay yer way. ", return "TNFL-GPYW". Given "Live from New York, it's Saturday Night!", return "LFNYISN".
+
+const createFunc = (str) => {
+    let acronym = str.split(" ");
+    let result = "";
+    for (let i = 0; i < acronym.length; i++) {
+        if (acronym.length > 0) {
+            result += acronym[0].toUpperCase();
+        }
+    }
+    return result;
+};
+
+console.log(createFunc("there's no free lunch - gotta pay yer way")); // Output: "TNFL-GPYW
+
+//Accept a string and return the number of non-space characters found in the string. For example, given "Honey pie, you are driving me crazy", return 29 (not 35).
+
+const countNonSpaceCharacters = (str) => {
+    const text = str.split(" ");
+    return text.join("").length;
+};
+console.log(convertToOpeningTag("Honey pie, you are driving me crazy"));
+
+// ["abc", "defg", "a", "xy"], 3; => ["abc", "defg"];
+
+// Given anarray of string, and length(number). Return a new array, remove all strings that have less chars than
+const arrOfStr = (arr, num) => {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].length < num) {
+            newArr.push(arr[i]);
+        } else {
+            return arr[i];
+        }
+    }
+    return newArr;
+};
+console.log(arrOfStr(["abc", "defg", "a", "xy"], 4));
+
+// Integer to Roman Numerals Given a positive integer that is less than 4000, return a string containing that value in Roman numeral representation. In this representation, I is 1, V is 5, X is 10, L = 50, C = 100, D = 500, and M = 1000. Remember that 4 is IV, 349 is CCCIL and 444 is CDXLIV.
+
+const dictionary = {
+    1: "I",
+    4: "IV",
+    5: "V",
+    9: "IX",
+    10: "X",
+    19: "XIX",
+    40: "XL",
+    49: "XLIX",
+    100: "C",
+    500: "D",
+    1000: "M"
+};
+
+const romanNum = (nums) => {
+    let positiveInt = "";
+    if (nums <= 0 || nums >= 4000) {
+        return invalid;
+    }
+    for (const key of dictionary) {
+        while (nums >= key) {
+            positiveInt += dictionary[key];
+        }
+    }
+    return positiveInt;
+};
+console.log(romanNum(349)); // Output: "CCCIL"
+console.log(romanNum(444)); // Output: "CDXLIV"
+console.log(romanNum(1987)); // Output: "MromanNum

@@ -276,6 +276,4 @@ const reverseArray2 = (array) => {
 console.log(reverseArray2([1, 2, 3, 4, 5, 6, 7, 9]));
 console.log(reverseArray2([1, 2, 3, 4, 5, 6, 7, 10]));
 
-const ntnLargest = (arr, n) => {
-    let largestEl = [];
-};
+
