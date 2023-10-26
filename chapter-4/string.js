@@ -137,16 +137,15 @@ const dictionary = {
 
 const romanNum = (nums) => {
     let positiveInt = "";
-    if (nums <= 0 || nums >= 4000) {
-        return invalid;
-    }
-    for (const key of dictionary) {
+    for (const key in dictionary) {
         while (nums >= key) {
             positiveInt += dictionary[key];
+            nums -= key;
         }
     }
     return positiveInt;
 };
-console.log(romanNum(349)); // Output: "CCCIL"
-console.log(romanNum(444)); // Output: "CDXLIV"
-console.log(romanNum(1987)); // Output: "MromanNum
+
+// Example usage:
+console.log(romanNum(349)); // Outputs "CCCIL"
+console.log(romanNum(444)); // Outputs "CDXLIV"
